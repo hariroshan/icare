@@ -1,0 +1,94 @@
+               user_omniauth_authorize GET|POST                  /users/auth/:provider(.:format)                     users/omniauth_callbacks#passthru {:provider=>/facebook/}
+                user_omniauth_callback GET|POST                  /users/auth/:action/callback(.:format)              users/omniauth_callbacks#(?-mix:facebook)
+                  destroy_user_session DELETE                    /sign_out(.:format)                                 devise/sessions#destroy
+                  api_list_itineraries GET                       /list_itineraries(.:format)                         api/list#latestitineraries {:subdomain=>"api", :format=>"json"}
+                  itineraries_api_user GET                       /users/:id/itineraries(.:format)                    api/users#itineraries {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                   api_user_references GET                       /users/:user_id/references(.:format)                api/references#index {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                                       POST                      /users/:user_id/references(.:format)                api/references#create {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                new_api_user_reference GET                       /users/:user_id/references/new(.:format)            api/references#new {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                    api_user_reference GET                       /users/:user_id/references/:id(.:format)            api/references#show {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                                       PUT                       /users/:user_id/references/:id(.:format)            api/references#update {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                              api_user GET                       /users/:id(.:format)                                api/users#show {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                                       PUT                       /users/:id(.:format)                                api/users#update {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+                                       DELETE                    /users/:id(.:format)                                api/users#destroy {:subdomain=>"api", :id=>/[A-Za-z0-9\.]+/, :format=>"json"}
+              unread_api_conversations GET                       /conversations/unread(.:format)                     api/conversations#unread {:subdomain=>"api", :format=>"json"}
+             api_conversation_messages POST                      /conversations/:conversation_id/messages(.:format)  api/messages#create {:subdomain=>"api", :format=>"json"}
+                     api_conversations GET                       /conversations(.:format)                            api/conversations#index {:subdomain=>"api", :format=>"json"}
+                                       POST                      /conversations(.:format)                            api/conversations#create {:subdomain=>"api", :format=>"json"}
+                  new_api_conversation GET                       /conversations/new(.:format)                        api/conversations#new {:subdomain=>"api", :format=>"json"}
+                      api_conversation GET                       /conversations/:id(.:format)                        api/conversations#show {:subdomain=>"api", :format=>"json"}
+                                       PUT                       /conversations/:id(.:format)                        api/conversations#update {:subdomain=>"api", :format=>"json"}
+                search_api_itineraries POST                      /itineraries/search(.:format)                       api/itineraries#search {:subdomain=>"api", :format=>"json"}
+             api_itinerary_build_index GET                       /itineraries/:itinerary_id/build(.:format)          api/build#index {:subdomain=>"api", :format=>"json"}
+                                       POST                      /itineraries/:itinerary_id/build(.:format)          api/build#create {:subdomain=>"api", :format=>"json"}
+               new_api_itinerary_build GET                       /itineraries/:itinerary_id/build/new(.:format)      api/build#new {:subdomain=>"api", :format=>"json"}
+              edit_api_itinerary_build GET                       /itineraries/:itinerary_id/build/:id/edit(.:format) api/build#edit {:subdomain=>"api", :format=>"json"}
+                   api_itinerary_build GET                       /itineraries/:itinerary_id/build/:id(.:format)      api/build#show {:subdomain=>"api", :format=>"json"}
+                                       PUT                       /itineraries/:itinerary_id/build/:id(.:format)      api/build#update {:subdomain=>"api", :format=>"json"}
+                                       DELETE                    /itineraries/:itinerary_id/build/:id(.:format)      api/build#destroy {:subdomain=>"api", :format=>"json"}
+                       api_itineraries GET                       /itineraries(.:format)                              api/itineraries#index {:subdomain=>"api", :format=>"json"}
+                                       POST                      /itineraries(.:format)                              api/itineraries#create {:subdomain=>"api", :format=>"json"}
+                     new_api_itinerary GET                       /itineraries/new(.:format)                          api/itineraries#new {:subdomain=>"api", :format=>"json"}
+                    edit_api_itinerary GET                       /itineraries/:id/edit(.:format)                     api/itineraries#edit {:subdomain=>"api", :format=>"json"}
+                         api_itinerary GET                       /itineraries/:id(.:format)                          api/itineraries#show {:subdomain=>"api", :format=>"json"}
+                                       PUT                       /itineraries/:id(.:format)                          api/itineraries#update {:subdomain=>"api", :format=>"json"}
+                                       DELETE                    /itineraries/:id(.:format)                          api/itineraries#destroy {:subdomain=>"api", :format=>"json"}
+                     api_notifications GET                       /notifications(.:format)                            api/notifications#index {:subdomain=>"api", :format=>"json"}
+                                   api GET|POST|PUT|PATCH|DELETE /                                                   api/messages#home {:subdomain=>"api", :format=>"json"}
+                   api_check_api_login GET                       /check_api_login(.:format)                          api/check#check_api_login {:subdomain=>"api", :format=>"json"}
+                                  root                           /                                                   pages#home
+                  unread_conversations GET                       /conversations/unread(.:format)                     conversations#unread
+                 conversation_messages POST                      /conversations/:conversation_id/messages(.:format)  messages#create
+                         conversations GET                       /conversations(.:format)                            conversations#index
+                                       POST                      /conversations(.:format)                            conversations#create
+                      new_conversation GET                       /conversations/new(.:format)                        conversations#new
+                          conversation GET                       /conversations/:id(.:format)                        conversations#show
+                                       PUT                       /conversations/:id(.:format)                        conversations#update
+                             feedbacks GET                       /feedbacks(.:format)                                feedbacks#index
+                                       POST                      /feedbacks(.:format)                                feedbacks#create
+                          new_feedback GET                       /feedbacks/new(.:format)                            feedbacks#new
+                         edit_feedback GET                       /feedbacks/:id/edit(.:format)                       feedbacks#edit
+                              feedback GET                       /feedbacks/:id(.:format)                            feedbacks#show
+                                       PUT                       /feedbacks/:id(.:format)                            feedbacks#update
+                                       DELETE                    /feedbacks/:id(.:format)                            feedbacks#destroy
+                    search_itineraries POST                      /itineraries/search(.:format)                       itineraries#search
+                 itinerary_build_index GET                       /itineraries/:itinerary_id/build(.:format)          build#index
+                                       POST                      /itineraries/:itinerary_id/build(.:format)          build#create
+                   new_itinerary_build GET                       /itineraries/:itinerary_id/build/new(.:format)      build#new
+                  edit_itinerary_build GET                       /itineraries/:itinerary_id/build/:id/edit(.:format) build#edit
+                       itinerary_build GET                       /itineraries/:itinerary_id/build/:id(.:format)      build#show
+                                       PUT                       /itineraries/:itinerary_id/build/:id(.:format)      build#update
+                                       DELETE                    /itineraries/:itinerary_id/build/:id(.:format)      build#destroy
+                           itineraries GET                       /itineraries(.:format)                              itineraries#index
+                                       POST                      /itineraries(.:format)                              itineraries#create
+                         new_itinerary GET                       /itineraries/new(.:format)                          itineraries#new
+                        edit_itinerary GET                       /itineraries/:id/edit(.:format)                     itineraries#edit
+                             itinerary GET                       /itineraries/:id(.:format)                          itineraries#show
+                                       PUT                       /itineraries/:id(.:format)                          itineraries#update
+                                       DELETE                    /itineraries/:id(.:format)                          itineraries#destroy
+                         notifications GET                       /notifications(.:format)                            notifications#index
+                      itineraries_user GET                       /users/:id/itineraries(.:format)                    users#itineraries {:id=>/[A-Za-z0-9\.]+/}
+                       user_references GET                       /users/:user_id/references(.:format)                references#index {:id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/}
+                                       POST                      /users/:user_id/references(.:format)                references#create {:id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/}
+                    new_user_reference GET                       /users/:user_id/references/new(.:format)            references#new {:id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/}
+                        user_reference GET                       /users/:user_id/references/:id(.:format)            references#show {:id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/}
+                                       PUT                       /users/:user_id/references/:id(.:format)            references#update {:id=>/[A-Za-z0-9\.]+/, :user_id=>/[A-Za-z0-9\.]+/}
+                                  user GET                       /users/:id(.:format)                                users#show {:id=>/[A-Za-z0-9\.]+/}
+                                       PUT                       /users/:id(.:format)                                users#update {:id=>/[A-Za-z0-9\.]+/}
+                                       DELETE                    /users/:id(.:format)                                users#destroy {:id=>/[A-Za-z0-9\.]+/}
+                   login_as_admin_user GET                       /admin/users/:id/login_as(.:format)                 admin/users#login_as
+                        ban_admin_user POST                      /admin/users/:id/ban(.:format)                      admin/users#ban
+                      unban_admin_user POST                      /admin/users/:id/unban(.:format)                    admin/users#unban
+                           admin_users GET                       /admin/users(.:format)                              admin/users#index
+                         resque_server                           /resque                                             Resque::Server
+                             dashboard GET                       /dashboard(.:format)                                users#dashboard
+                              settings GET                       /settings(.:format)                                 users#settings
+                                banned GET                       /banned(.:format)                                   users#banned
+                                 about GET                       /about(.:format)                                    pages#about
+                          how_it_works GET                       /how_it_works(.:format)                             pages#how_it_works
+                                policy GET                       /policy(.:format)                                   pages#policy
+                                 terms GET                       /terms(.:format)                                    pages#terms
+                            demo_terms GET                       /demo_terms(.:format)                               pages#demo_terms
+                       fbjssdk_channel GET                       /fbjssdk_channel(.:format)                          pages#fbjssdk_channel
+                            report_uri POST                      /report_uri(.:format)                               pages#report_uri
+content_security_policy_forward_report POST                      /content_security_policy/forward_report(.:format)   content_security_policy#scribe

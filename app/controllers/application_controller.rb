@@ -32,7 +32,11 @@ class ApplicationController < ActionController::Base
 
   private
   def after_sign_in_path_for(resource_or_scope)
-    session.delete(:redirect_to) || dashboard_path
+    if  request.subdomain != 'api'
+        session.delete(:redirect_to) || dashboard_path
+    else
+       session.delete(:redirect_to) || api_path
+    end
   end
 
   def check_locale_availability(locale)

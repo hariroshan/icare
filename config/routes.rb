@@ -1,11 +1,48 @@
 Icare::Application.routes.draw do
-
+ 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
+#API
 
-  root to: 'pages#home'
+ namespace :api , path:'/', constraints:{ subdomain:'api' },:defaults => { :format => 'json' } do #
+
+	 match '/list_itineraries' , to: 'list#latestitineraries', via:[:get]
+
+	 resources :users, constraints: { id: /[A-Za-z0-9\.]+/ }, only: [:show, :update, :destroy] do
+	    get :itineraries, on: :member
+	    resources :references, only: [:show, :new, :create, :update, :index]
+ 	 end
+
+ 	 resources :conversations, only: [:show, :new, :create, :update, :index] do
+  		  get :unread, on: :collection
+  		  resources :messages, only: [:create]
+	  end
+
+
+ 	 resources :itineraries, only: [:show, :new, :create, :edit, :update, :destroy, :index, :search] do
+  	  post :search, on: :collection
+  	  resources :build
+ 	 end
+
+  	resources :notifications, only: :index
+
+		match '/', to: 'messages#home', via: [:get, :post, :put, :patch, :delete]
+	devise_scope :user do	
+		match '/check_api_login' , to: 'check#check_api_login', via:[:get]
+	end
+
+
+ end
+
+#API ends
+
+root to: 'pages#home' 
+
+
+
+  
 
   resources :conversations, only: [:show, :new, :create, :update, :index] do
     get :unread, on: :collection

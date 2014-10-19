@@ -1,0 +1,11 @@
+1. ive changed itinaries/search to get and passed url like 
+
+http://api.carpooling.com:3000/itineraries/search?utf8=%E2%9C%93&authenticity_token=C%2BlV425AYaQX7OP831OAb3LIXKo%2FWNa39Pf0Z7%2BmLf4%3D&itineraries_search[from]=Chennai%2C+Tamil+Nadu%2C+India&itineraries_search[to]=Bengaluru%2C+Karnataka%2C+India&itineraries_search[filter_verified]=0&itineraries_search[filter_round_trip]=0&itineraries_search[filter_smoking_allowed]=&itineraries_search[filter_pets_allowed]=&itineraries_search[filter_driver_gender]=&itineraries_search[start_location_lat]=13.0597049&itineraries_search[start_location_lng]=80.22522779999997&itineraries_search[end_location_lat]=12.9715987&itineraries_search[end_location_lng]=77.59456269999998
+
+
+this returns all the matched itinaries in db for current user
+now it has been changed back to post
+
+2. ive to add a feature to query all the itinaries like the one in dashboard. dashboard code can be modified for this purpose.
+
+

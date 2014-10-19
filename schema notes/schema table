@@ -1,0 +1,73 @@
+consist of 3 tables :
+	itineraries
+	system.indexes
+	users
+________________________________________________________
+Table				fields
+_________________________________________________________
+
+itineraries			_id
+				tolls
+				_slugs
+				start_address
+				end_address
+				description
+				smoking_allowed
+				pets_allowed
+				fuel_cost
+				avoid_highways
+				avoid_tolls
+				round_trip
+				start_location
+				end_location
+				via_waypoints
+				overview_path
+				overview_polyline
+				leave_date
+				pink
+				daily
+				user_id
+				updated_at
+				created_at
+				driver_gender
+				verified
+
+----------------------------------------------------------
+users				_id
+				admin
+				banned
+				bio
+				birthday
+				created_at
+				deleted_at
+				education
+				email
+				facebook_data_cached_at
+				facebook_favorites
+				facebook_friends
+				facebook_permissions
+				facebook_verified
+				gender
+				languages
+				locale
+				name
+				oauth_expires_at
+				oauth_token
+				provider
+				send_email_messages
+				send_email_references
+				time_zone
+				uid
+				updated_at
+				username
+				username_or_uid
+				vehicle_avg_consumption
+				work
+------------------------------------------------------------------
+system.indexes			v
+				name
+				key
+				ns
+
+
+
