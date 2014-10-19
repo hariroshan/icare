@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.0.0'
 gem 'rails', '3.2.19'
 
 # Servers
@@ -12,6 +12,9 @@ gem 'simpleconfig'
 
 # API
 gem 'rabl'
+
+#Pagination
+gem 'kaminari'
 
 # ODM and related
 gem 'client_side_validations'
@@ -32,6 +35,7 @@ gem 'rgeo'
 # Facebook integration
 gem 'koala'
 gem 'omniauth-facebook'
+gem 'fb_graph'
 
 # Performance and Exception management
 gem 'airbrake'
